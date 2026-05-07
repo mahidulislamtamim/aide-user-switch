@@ -1,11 +1,13 @@
 <?php
 /*
-Plugin Name: Aide::Switch User
+Plugin Name: Aide :: Switch User
 Description: Allows administrators to switch to any user account and back.
 Version: 1.0.0
+Requires at least: 5.8
+Requires PHP: 7.4
 Author: Aide247
 Author URI: https://aide247.com/
-Text Domain: aideuserswitch
+Text Domain: aide-user-switch
 Domain Path: /languages
 Plugin URI: https://aide247.com/
 License: GPLv2 or later
@@ -48,7 +50,7 @@ final class Aide_User_Switch {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'aideuserswitch', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'aide-user-switch', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
     /**
@@ -76,7 +78,7 @@ final class Aide_User_Switch {
 		$actions['aide_switch'] = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( $switch_url ),
-			esc_html__( 'Switch to', 'aideuserswitch' )
+			esc_html__( 'Switch to', 'aide-user-switch' )
 		);
         return $actions;
     }
@@ -192,14 +194,14 @@ final class Aide_User_Switch {
 			esc_html(
 				sprintf(
 					/* translators: %s is the current username */
-					__( 'You are currently logged in as %s.', 'aideuserswitch' ),
+					__( 'You are currently logged in as %s.', 'aide-user-switch' ),
 					$current_user->user_login
 				)
 			),
 			wp_kses(
 				sprintf(
 					/* translators: %s is the original username */
-					__( '(<a href="%1$s">Switch back to %2$s</a>)', 'aideuserswitch' ),
+					__( '(<a href="%1$s">Switch back to %2$s</a>)', 'aide-user-switch' ),
 					esc_url( $switch_back_url ),
 					esc_html( $original_user->user_login )
 				),
